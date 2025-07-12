@@ -64,12 +64,7 @@ class AlienInvasion:
                  self.bullets.remove(bullet)
         # 检查是否有子弹击中了外星人
         # 如果是，就删除相应的子弹和外星人
-        self._check_bullent_alien_collisions()
-        collistions=pygame.sprite.groupcollide(self.bullets,self.aliens,True,True)
-        if not self.aliens:
-            # 删除现有的子弹并创建一个新的外星舰队
-            self.bullets.empty()
-            self._create_fleet()
+        self._check_bullet_alien_collisions()
     def _update_screen(self):
 
         """更新屏幕上面的图像，并切换到新的屏幕"""
@@ -116,6 +111,14 @@ class AlienInvasion:
         for alien in self.aliens.sprites():
             alien.rect.y+=self.settings.fleet_drop_speed
         self.settings.fleet_direction*=-1
+    def _check_bullet_alien_collisions(self):
+        """响应子弹和外星人的碰撞"""
+        # 删除发生碰撞的子弹和外星人
+        collisions=pygame.sprite.groupcollide(self.bullets,self.aliens,True,True)
+        if not self.aliens:
+            # 删除现有的子弹，并创建一个新的外星舰队
+            self.bullets.empty()
+            self._create_fleet()
     
 if __name__=='__main__':
     ai=AlienInvasion()
