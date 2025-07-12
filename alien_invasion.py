@@ -19,7 +19,8 @@ class AlienInvasion:
         self.bullets=pygame.sprite.Group()
         self.aliens=pygame.sprite.Group()
         self._create_fleet()
-        self.game_active=True
+        # 让游戏一开始处于非活动状态
+        self.game_active=False
     def run_game(self):
             while True:
                 self._check_events()
