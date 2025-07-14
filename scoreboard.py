@@ -62,7 +62,7 @@ class Scoreboard:
         """显示还余下多少艘飞船"""
         self.ships=Group()
         for ship_number in range(self.stats.ships_left):
-            ship=Ship(self.si_game)
+            ship=Ship(self.ai_game)
             ship.rect.x=10+ship_number*ship.rect.width
             ship.rect.y=10
             ship.ships.add(ship)
